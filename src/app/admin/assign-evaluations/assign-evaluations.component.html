@@ -1,0 +1,347 @@
+<div class="row m-0">
+  <div class="col-2 main">
+    <app-sidebar class="border border-top-0 border-bottom-0 border-start-0 border-2"></app-sidebar>
+  </div>
+  
+    <!--Alert Messages-->
+
+    <!-- <div class="alert alert-danger alert-dismissible fade show" *ngIf="fail" role="alert">
+      <p>Your User ID or password was incorrect. Please try again.</p>
+      <a type="button-1" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+    </div>
+    <div class="alert alert-success alert-dismissible fade show" *ngIf="success" role="alert">
+      <p>Login Successful !.</p>
+      
+      <a type="button-1" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+    </div> -->
+
+    <form class="form txt-prop" [formGroup]="assignEvalForm" (ngSubmit)="collection()">
+      <div class="col-10 display-area mt-1">
+      <div class="subHeading col-12">
+        You are here: My Account/Assign Evaluation
+      </div>
+      <!--SO ID SO ROLE-->
+
+      <div class="row m-0 mt-2 mb-2">
+        <div class="col-6 ml-5 ">
+          <div class="mb-2 row">
+            <label for="inputAssociateId" class="col-4 sub-heading col-form-label">SO ID</label>
+
+            <div class="col-sm-8">
+              <input type="text" class="form-control" maxlength="10" id="soId" formControlName="soId" />
+
+              <!--To validate-->
+
+              <span class="all-other-text text-danger text-nowrap"
+                *ngIf="soId.errors?.['required'] && (soId.touched || soId.dirty) || (soId.errors && fail)">Enter SO
+                Id</span>
+
+              <span class="all-other-text text-danger text-nowrap"
+                *ngIf="soId.errors?.['pattern' && 'minlength']  && (soId.dirty || soId.touched)"> Enter valid SO
+                Id</span>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 ml-5">
+          <div class="mb-2 row">
+            <label for="inputAssociateId" class="col-4 sub-heading col-form-label">SO Role</label>
+
+            <div class="col-sm-8">
+              <input type="text" class="form-control" maxlength="20" id="soRole" formControlName="soRole" />
+              <!--To validate-->
+              <span class="all-other-text text-danger text-nowrap"
+                *ngIf="soRole.errors?.['required'] && (soRole.touched || soRole.dirty) || (soRole.errors && fail)">Enter
+                a Role</span>
+
+              <span class="all-other-text text-danger "
+                *ngIf="soRole.errors?.['pattern']  && (soRole.dirty || soRole.touched)"> Role should be alphabetic and
+                special chars like period, space, hyphen, underscore.</span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <p>
+
+
+        <!--Candidate Details -->
+      <h5 class="px-2 pb-1 mb-2 heading txt-prop">Candidate Details</h5>
+      <div class="mb-2">
+
+        <div class="row m-0 mt-2 border-dark">
+          <div class="col-6 ml-5">
+            <div class="mb-2 row">
+              <label for="inputAssociateId" class="col-4 sub-heading col-form-label">Candidate Id</label>
+
+              <div class="col-sm-8">
+                <input type="text" class="form-control" maxlength="8" id="candidateId" formControlName="candidateId" />
+                <!--To validate-->
+                <span class="all-other-text text-danger text-nowrap"
+                  *ngIf="candidateId.errors?.['required'] && (candidateId.touched || candidateId.dirty) || (candidateId.errors && fail)">Enter
+                  Associate Id</span>
+
+                <span class="all-other-text text-danger text-nowrap"
+                  *ngIf="candidateId.errors?.['pattern' && 'minlength']  && (candidateId.dirty || candidateId.touched)">
+                  Enter valid Associate Id
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 ml-5">
+            <div class="mb-2 row">
+              <label for="inputCandidateStack" class="col-4 sub-heading col-form-label">Candidate Stack</label>
+
+              <div class="col-sm-8">
+                <input type="text" class="form-control" maxlength="20" id="candidateStack"
+                  formControlName="candidateStack" />
+                <!--Display Error Message-->
+
+                <span class="all-other-text text-danger text-nowrap"
+                  *ngIf="candidateStack.errors?.['required'] && (candidateStack.touched || candidateStack.dirty) || (candidateStack.errors && fail)">Enter
+                  Technology Stack
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row m-0 mt-2 border-dark">
+          <div class="col-6 ml-5">
+            <div class="mb-2 row">
+              <label for="inputLastName" class="col-4 sub-heading col-form-label">First Name</label>
+
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="candidateFirstName" maxlength="20"
+                  formControlName="candidateFirstName" />
+                <!--Display Error Message-->
+                <span class="all-other-text text-danger text-nowrap"
+                  *ngIf="candidateFirstName.errors?.['required'] && (candidateFirstName.touched || candidateFirstName.dirty) || (candidateFirstName.errors && fail)">Enter
+                  associate first name</span>
+
+                <span class="all-other-text text-danger text-nowrap"
+                  *ngIf="candidateFirstName.errors?.['pattern']  && (candidateFirstName.dirty || candidateFirstName.touched)">
+                  First Name should be alphabetic
+                </span>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 ml-5">
+            <div class="mb-2 row">
+              <label for="inputCandidateStack" class="col-4 sub-heading col-form-label">Last Name</label>
+
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="candidateLastName" maxlength="20"
+                  formControlName="candidateLastName" />
+                <!--Display Error Message-->
+                <span class="all-other-text text-danger text-nowrap"
+                  *ngIf="candidateLastName.errors?.['required'] && (candidateLastName.touched || candidateLastName.dirty) || (candidateLastName.errors && fail)">Enter
+                  associate last name</span>
+
+                <span class="all-other-text text-danger text-nowrap"
+                  *ngIf="candidateLastName.errors?.['pattern']  && (candidateLastName.dirty || candidateLastName.touched)">
+                  Last Name should be alphabetic
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row m-0 mt-2 border-dark">
+          <div class="col-6 ml-5">
+            <div class="mb-2 row">
+              <label for="inputUploadResume" class="col-4 sub-heading col-form-label">Upload Resume</label>
+
+              <div class="col-sm-8">
+                <input type="file" class="form-control filled" id="upload_resume" accept=".pdf, .docx, .doc"
+                  formControlName="upload_resume" />
+                <!--Display Error Message-->
+                <span class="all-other-text text-danger text-nowrap"
+                  *ngIf="upload_resume.errors?.['required'] && (upload_resume.touched || upload_resume.dirty) || (upload_resume.errors && fail)">Accepted
+                  file format is .doc, .docx, .pdf</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p>
+        <!--Evaluator Details-->
+      <h5 class="px-2 pb-1 heading txt-prop">Evaluator Details</h5>
+
+      <div class="row m-0 mt-2 border-dark">
+        <div class="col-6 ml-5">
+          <div class="mb-2 row">
+            <label for="inputLastName" class="col-4 sub-heading col-form-label">Evaluator ID</label>
+
+            <div class="col-sm-8">
+              <a class="box btn-outline-hola form-control">
+                <input type="text" class="form-control" maxlength="8" id="evaluatorId" formControlName="evaluatorId"
+                  [(ngModel)]="evaluatorData.evaluatorId" name="search">
+                <div class="btn search-btn" type="submit">
+                  <img class="search-icon" (click)="openEvalDetails()"
+                    src="https://cdn-icons-png.flaticon.com/512/9195/9195894.png" />
+                </div>
+              </a>
+              <!--Display Error Message-->
+
+              <span class="all-other-text text-danger text-nowrap"
+                *ngIf="evaluatorId.errors?.['required'] && (evaluatorId.touched || evaluatorId.dirty)">Enter valid
+                Evaluator ID</span>
+              <span class="all-other-text text-danger text-nowrap"
+                *ngIf="evaluatorId.errors?.['pattern'] && (evaluatorId.touched || evaluatorId.dirty)">Enter
+                valid Evaluator ID</span>
+
+              <!-- <span class="all-other-text text-danger text-nowrap"
+                *ngIf="evaluatorId.errors?.['pattern'] && (evaluatorId.touched || evaluatorId.dirty)">ID doesn't match to any Evaluator ID. Please click search icon to see the available list.</span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row m-0 mt-2 border-dark">
+        <div class="col-6 ml-5">
+          <div class="mb-2 row">
+            <label for="inputLastName" class="col-4 sub-heading col-form-label">First Name</label>
+
+            <div class="col-sm-8">
+              <input [(ngModel)]="evaluatorData.evaluatorFirstName" type="text" class="form-control filled"
+                id="evaluatorFirstName" formControlName="evaluatorFirstName" readonly />
+              <!--Display Error Message-->
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 ml-5">
+          <div class="mb-2 row">
+            <label for="inputCandidateStack" class="col-4 sub-heading col-form-label">Last Name</label>
+
+            <div class="col-sm-8">
+              <input type="text" class="form-control filled" [(ngModel)]="evaluatorData.evaluatorLastName"
+                id="evaluatorLastName" maxlength="20" formControlName="evaluatorLastName" readonly />
+              <!--Display Error Message-->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row m-0 mt-2">
+        <div class="col-6 ml-5">
+          <div class="mb-2 row">
+            <label for="inputCandidateStack" class="col-4 sub-heading col-form-label">Evaluation By</label>
+
+            <div class="col-sm-8">
+              <input type="date" class="form-control" min="{{date|date:'dd-mm-yyyy'}}" id="evaluationDate"
+                formControlName="evaluationDate" />
+
+              <!-- <mat-form-field>
+                <mat-label>Input disabled</mat-label>
+                <input matInput [matDatepicker]="dp3" disabled>
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
+                <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+              </mat-form-field> -->
+
+              <!--Display Error Message-->
+              <!-- <span class="sub-heading text-danger" *ngIf="
+                    evaluationDate &&
+                    evaluationDate.invalid &&
+                    evaluationDate.touched
+                  ">Field is required</span> -->
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+
+
+      <!--Buttons-->
+      <div class="d-grid gap-2 col-3 mx-auto mt-4 mb-2 justify-content-md-center">
+        <button class="btn me-md-2" (click)="confirmAssign()" type="submit">
+          Submit
+        </button>
+        <button class="btn me-md-2" routerLink="/Home" type="reset">
+          Cancel
+        </button>
+      </div>
+      <!--Pop Model Data-->
+
+      <ng-template #assignDialog>
+        <div class="modal-header" id="Border">
+          <h2 mat-dialog-title class="pt-2 primary-heading txt-prop">Pending Evaluation</h2>
+          <a mat-button mat-dialog-close type="button" routerLink="/AssignEvaluation" class="btn-close pt-2"></a>
+        </div>
+        <form>
+          <mat-dialog-content>
+            <div class="row m-0 txt-prop">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="heading" scope="col">Evaluator ID</th>
+                    <th class="heading" scope="col">Evaluator Name</th>
+                    <th class="heading" scope="col">Project Role</th>
+                    <th class="heading" scope="col">Open Evalaution</th>
+                    <th class="heading" scope="col">Completed Evaluation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of users |search: searchText | paginate: {itemsPerPage: 20, currentPage: p}">
+                    <!-- <td class="sub-heading ID" scope="row" (click)="getdata(item.evaluatorId)">{{ item.associateId }}
+              </td> -->
+                    <td class="sub-heading">
+                      <a mat-button mat-dialog-close class="popup"
+                        (click)="getdata(item.associateId)">{{item.associateId}}</a>
+                    </td>
+                    <td class="sub-heading">{{ item.firstName }} {{ item.lastName }}</td>
+                    <td class="sub-heading">{{ item.projectRole }}</td>
+                    <td class="sub-heading">3</td>
+                    <td class="sub-heading">1</td>
+                  </tr>
+                </tbody>
+                <tbody></tbody>
+              </table>
+              <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
+            </div>
+          </mat-dialog-content>
+        </form>
+      </ng-template>
+
+      <!--Confirm assign model-->
+
+      <ng-template #confirmUpdate>
+        <div class="modal-header border border-top-0 border-end-0 border-start-0 border-2" id="Border">
+          <h2 mat-dialog-title class="text-center primary-heading pt-2 txt-prop">Your changes have been saved!</h2>
+          <!-- <a mat-button mat-dialog-close type="button" class="btn-close pt-2"></a> -->
+        </div>
+    
+        <mat-dialog-content>
+          <form>
+            <div class="row m-0 txt-prop">
+              <div>
+                <h4
+                  class="text-center pt-3 pb-5 ">
+                  Do you want to continue to assign the evaluator for next associate?</h4>
+                <div class="d-grid gap-2 col-6 mx-auto mb-2">
+                  <button mat-dialog-close class="btn btn-outline-hola me-md-2" (click)="clearForm()" type="reset">
+                    Yes, I want to Continue
+                  </button>
+                  <a mat-button mat-dialog-close type="button" type="button" routerLink="/Home">
+                    No, Thanks
+                  </a>
+    
+                </div>
+              </div>
+    
+            </div>
+    
+          </form>
+        </mat-dialog-content>
+      </ng-template>
+    </div>
+    </form>
+ 

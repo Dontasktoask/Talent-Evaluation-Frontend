@@ -1,0 +1,188 @@
+.evaluator {
+  margin-top: 40px;
+}
+ 
+p{
+  border-bottom:1px solid #404040;
+  border-style: dotted;
+  /* margin-top: 20px; */
+}
+ 
+form {
+  height: calc(130vh);
+}
+ 
+.img {
+  height: 20px;
+  width: 20px;
+}
+ 
+.img:hover {
+  cursor: pointer;
+}
+ 
+.container {
+  width: calc(100% - 150px);
+  margin-right: auto;
+}
+ 
+/* Model Style*/
+.main-modal {
+  left: 240px;
+  width: calc(100% - 250px);
+ 
+}
+ 
+.form-control {
+  width: 320px;
+}
+ 
+button {
+  width: 248px;
+  color: azure;
+  background-color: #1a75bc;
+  font-weight: bold;
+}
+
+button:hover {
+  width: 248px;
+  color: azure;
+  background-color: #1a75bc;
+  font-weight: bold;
+  cursor: pointer;
+
+}
+ 
+.subHeading {
+  display: block;
+  font-size: 16px;
+  padding-left: 10px;
+  margin-bottom: 0.83em;
+  background-color: #1a75bc;
+  color: white;
+}
+.box{
+    height: 40px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center ;
+    padding: 3px;
+}
+.btn-outline-hola{
+    border: 1px solid rgb(234, 234, 234);
+}
+.search-btn{
+    background-color: white;
+    height: 35px;
+    border-style: none;
+    border-color: white;
+}
+.box >input{
+    flex: 1;
+    border: none;
+    outline: none;
+}
+.search-icon{
+    height: 20px;
+    width: 20px;
+}
+thead{
+  border: white;
+}
+tbody tr{
+  border-bottom: #404040;
+  border-style: dotted;
+}
+.heading{
+  color: #404040;
+  font-size: 16px;
+  text-decoration: none;
+}
+.primary-heading{
+  color: #1a75bc;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.ID{
+  color: #1a75bc;
+  
+}
+.ID:hover{
+  cursor: pointer;
+  text-decoration:underline;
+}
+a{
+  text-decoration: none;
+}
+div a .box{
+  width: 320px;
+}
+ 
+.main{
+  position:absolute;
+  width: 100%;
+  top: 5rem;
+  z-index: 1;
+  padding-left: 0%;
+}
+ 
+.display-area{
+  position:relative;
+  left: 200px;
+  /* width: 100%; */
+  width: calc(100% - 200px);
+  padding-top: 5rem;
+  padding-left: 20px;
+}
+ 
+app-sidebar{  
+  position: fixed;
+  height: calc(100% - 4rem);
+  border-right: solid 1px #404040;
+  background-color: white;
+  overflow-x:hidden;
+  z-index: 1;
+  white-space: nowrap;
+ 
+ 
+}
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.txt-prop {
+  font-family: Arial, Helvetica, sans-serif;
+  
+}
+.popup{
+  color: #1a75bc;
+  background-color: white;
+}
+.popup:hover{
+  text-decoration: underline;
+  background-color: white;
+}
+div .alert{
+  text-align: center;
+  left: 20%;
+  
+}
+.alert{
+  width: 400px;
+  height: 60px;
+ 
+}
+.button-1{
+  height: 10px;
+  width: 10px;
+  background-color: azure;
+}
+.filled{
+  background-color: rgb(229, 231, 232);
+}
+mat-form-field{
+  height: 40px;
+}

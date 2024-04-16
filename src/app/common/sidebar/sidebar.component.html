@@ -1,0 +1,14 @@
+<!--Code For SideBar with all Component Data Include-->
+<nav *ngIf="nav.visible">
+  <div class="side-nav-content" *ngFor="let item of list" ngClass="{'d-none':item.role==Admin}">
+      <ul class="nav-list" >
+        <li class="nav-list-item border border-top-0 border-end-0 border-start-0 border-2" routerLink="/{{item.root}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+          <!-- <img src={{item.img}} alt="Logo"> -->
+          <span>
+            <a>{{item.name}}</a>
+          </span>
+        </li>
+      </ul>
+  </div>
+  </nav>
+  

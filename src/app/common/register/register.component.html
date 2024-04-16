@@ -1,0 +1,207 @@
+<div class="container justify-content-center">
+  <div class="form-container pb-3 display-area">
+
+    <!--Alert Messages-->
+
+    <div class="alert alert-danger alert-dismissible fade show" *ngIf="fail" role="alert">
+      <p>Your User ID or password was incorrect. Please try again.</p>
+      <a type="button-1" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+    </div>
+    <div class="alert alert-success alert-dismissible fade show" *ngIf="success" role="alert">
+      <p>Register Successful !.</p>
+      <a type="button-1" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+    </div>
+
+    <form [formGroup]="register" (ngSubmit)="collection()" class="col-10 border border-2 mt-5 pt-3  pb-3">
+      <h2 class="text-center text-dark pb-3 txt-prop">Register</h2>
+
+      <!--Input Fields-->
+      <div class="d-grid col-6 mx-auto txt-prop">
+
+        <div class="col-12 pb-2">
+          <div class="mb-2 row">
+            <label for="associateId" class="col-5 col-form-label ">Associate Id</label>
+
+            <div class="col-5">
+              <input maxlength="8"  type="text" class="form-control" id="associateId" formControlName="associateId" />
+              <!-- <div class="all-other-text text-danger text-nowrap" *ngIf="fail && associateId.errors">Enter your Associate ID
+              </div> -->
+              <div class="all-other-text text-danger text-nowrap" *ngIf="register.controls['associateId']&& (register.controls['associateId'].dirty || register.controls['associateId'].touched || (fail && associateId.errors))">
+                <small *ngIf="register.controls['associateId'].errors?.['required']">Enter your Associate ID</small>
+                <small *ngIf="register.controls['associateId'].errors?.['minLength']">Enter your Associate ID</small>
+                <small *ngIf="register.controls['associateId'].errors?.['pattern']">Associate ID should be numeric</small>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-2">
+          <div class="mb-2 row">
+            <label for="firstName" class="col-5 col-form-label">First Name</label>
+
+            <div class="col-5">
+              <input maxlength="20" type="text" class="form-control" id="firstName" formControlName="firstName" />
+
+              <div class="all-other-text text-danger text-nowrap" *ngIf="register.controls['firstName']&& (register.controls['firstName'].dirty || register.controls['firstName'].touched || (fail && firstName.errors))">
+                <small *ngIf="register.controls['firstName'].errors?.['required']">Enter your first name</small>
+                <small *ngIf="register.controls['firstName'].errors?.['pattern']">First Name should be alphabetic</small>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-2">
+          <div class="mb-2 row">
+            <label for="lastName" class="col-5 col-form-label">Last Name</label>
+
+            <div class="col-5">
+              <input maxlength="20" type="text" class="form-control" id="lastName" formControlName="lastName" />
+              <!-- <div class="all-other-text text-danger text-nowrap" *ngIf="fail && lastName.errors">
+                Enter your last name
+              </div> -->
+              <div class="all-other-text text-danger text-nowrap" *ngIf="register.controls['lastName']&& (register.controls['lastName'].dirty || register.controls['lastName'].touched || (fail && lastName.errors))">
+                <small *ngIf="register.controls['lastName'].errors?.['required']">Enter your last name</small>
+                <small *ngIf="register.controls['lastName'].errors?.['pattern']">Last Name should be alphabetic</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-2">
+          <div class="mb-2 row">
+            <label for="techStack" class="col-5 col-form-label">Tech Stack</label>
+            <div class="col-5">
+              <select class="form-select" aria-label="Default select example" id="techStack"
+                formControlName="techStack">
+                <option disabled value="">Select an Option</option>
+                <option value="Agile">Agile</option>
+                <option value="Automation">Automation</option>
+                <option value="Java FSE">Java FSE</option>
+                <option value="Manual Testing">Manual Testing</option>
+                <option value="MEAN (MongoDB, Express.js, Angular, Node.js)">.MEAN (MongoDB, Express.js, Angular,
+                  Node.js)</option>
+                <option value="MERN (MongoDB, Express.js, React, Node.js)">MERN (MongoDB, Express.js, React, Node.js)
+                </option>
+                <option value=".Net FSE">.Net FSE</option>
+                <option value="Node.js">Node.js</option>
+                <option value="Python-Django">Python-Django</option>
+                <option value="Others">Others</option>
+              </select>
+
+              <!-- <div class="all-other-text text-danger text-nowrap" *ngIf="fail && techStack.errors">
+                Select an option
+              </div> -->
+              <div class="all-other-text text-danger text-nowrap" *ngIf="register.controls['techStack']&& (register.controls['techStack'].dirty || register.controls['techStack'].touched || (fail && techStack.errors))">
+                <small *ngIf="register.controls['techStack'].errors?.['required']">Select an option</small>
+              </div>
+              <!-- <span class="all-other-text text-danger text-nowrap"
+                *ngIf="techStack.errors?.['required'] && (techStack.touched || techStack.dirty) || (fail && techStack.errors)">Select an option</span> -->
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-2">
+          <div class="mb-2 row">
+            <label for="projectRole" class="col-5 col-form-label">Project Role</label>
+            <div class="col-5">
+              <select class="form-select" aria-label="Default select example" id="projectRole"
+                formControlName="projectRole">
+                <option disabled value="">Select an Option</option>
+                <option value="Architect">Architect</option>
+                <option value="Business Analyst">Business Analyst</option>/
+                <option value="Developer">Developer</option>
+                <option value="Engineering Manager">Engineering Manager</option>
+                <option value="QA Engineer">QA Engineer</option>
+                <option value="QA Lead">QA Lead</option>
+                <option value="Scrum Master">Scrum Master</option>
+                <option value="Sr Developer">Sr Developer</option>
+                <option value="Team Lead">Tech Lead</option>
+              </select>
+
+              <!-- <div class="all-other-text text-danger text-nowrap" *ngIf="fail && projectRole.errors">
+                Select an option
+              </div> -->
+              <div class="all-other-text text-danger text-nowrap" *ngIf="register.controls['projectRole'].invalid && (register.controls['projectRole'].dirty || register.controls['projectRole'].touched || (fail && projectRole.errors))">
+                <small *ngIf="register.controls['projectRole'].errors?.['required']">Select an option</small>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-2">
+          <div class="mb-2 row">
+            <label for="userName" class="col-5 col-form-label">User Id</label>
+
+            <div class="col-5">
+              <input maxlength="64" type="text" class="form-control" id="userName" formControlName="userName" #Name/>
+
+              <div  *ngIf="register.controls['userName'].invalid && (register.controls['userName'].dirty || register.controls['userName'].touched || (fail && userName.errors)) ">
+                <small class="all-other-text text-danger text-nowrap" *ngIf="register.controls['userName'].errors?.['required']">Enter an email address for your User ID</small>
+                <small class="col-12 all-other-text text-danger" *ngIf="register.controls['userName'].errors?.['pattern']">Invalid email address. Do not include spaces or special characters (+ & / # "", etc...). Acceptable symbols like hyphens, underscores, or periods, cannot be typed consecutively.</small>
+              </div>
+              <!-- <span class="all-other-text text-danger text-nowrap"
+                *ngIf="userName.errors?.['required'] && (userName.touched || userName.dirty) || (fail && userName.errors)">Enter an email address for your
+                User ID</span>
+              <span class="all-other-text text-danger "
+                *ngIf="userName.errors?.['pattern'] && (userName.touched || userName.dirty)"> Invalid email address. Do not
+                include spaces or special characters (+ & / # "", etc...). Acceptable symbols like hyphens, underscores,
+                or periods, cannot be typed consecutively.</span> -->
+              <!-- <span class="all-other-text text-danger text-nowrap" *ngIf="userName.errors?.['pattern'] && (userName.touched || userName.dirty)">User Id already exists</span>            -->
+            </div>
+          </div>
+        </div>
+
+        <!--Need to add logic for passsword and confirm password should be same -->
+        <div class="col-12 pb-2">
+          <div class="mb-2 row">
+            <label for="password" class="col-5 col-form-label">password</label>
+
+            <div class="col-5">
+              <input maxlength="25" type="password" class="form-control" id="password" formControlName="password"/>
+              <div  *ngIf="register.controls['password'].invalid && (register.controls['password'].dirty || register.controls['password'].touched || (fail && password.errors)) ">
+                <small class="all-other-text text-danger text-nowrap" *ngIf="register.controls['password'].errors?.['required']">Enter your Password</small>
+                <small class="col-12 all-other-text text-danger" *ngIf="register.controls['password'].errors?.['pattern']">{{PasswordData}}</small>              
+              </div>
+              <!-- <span class="all-other-text text-danger text-nowrap"
+                *ngIf="password.errors?.['required'] && (password.touched || password.dirty) || (fail && password.errors) ">Enter your Password</span>
+              <span class="all-other-text text-danger"
+                *ngIf="password.errors?.['pattern'] && (password.touched || password.dirty)">{{PasswordData}}</span> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pb-2">
+          <div class="mb-2 row">
+            <label for="confirmPassword" class="col-5 col-form-label">Confirm Password</label>
+
+            <div class="col-5">
+              <input maxlength="25" type="password" class="form-control" id="confirmPassword"
+                formControlName="confirmPassword" />
+
+                <!-- <div  *ngIf="register.controls['confirmPassword'].invalid && (register.controls['confirmPassword'].dirty || register.controls['confirmPassword'].touched || (fail && confirmPassword.errors)) ">
+                  <small class="all-other-text text-danger text-nowrap" *ngIf="register.controls['confirmPassword'].errors?.['required']">Re-enter your Password</small>
+                  <small class="col-12 all-other-text text-danger" *ngIf="register.controls['confirmPassword'].errors?.['pattern']" [ngStyle]="{'display':repeatPass}">Password must match</small>
+                </div> -->
+              <span class="all-other-text text-danger text-nowrap"
+                *ngIf="confirmPassword.errors?.['required'] && (confirmPassword.touched || confirmPassword.dirty) || fail && confirmPassword.errors ">Re-enter
+                your Password</span>
+              <span class="all-other-text text-danger text-nowrap" [ngStyle]="{'display':repeatPass}">Password must
+                match</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Submit and cancel Buttons-->
+
+      <div class="d-grid gap-2 col-4 mx-auto mt-2 mb-2">
+        <button class="btn pb-2" type="submit" (click)="sendMessage(Name)">Submit</button>
+        <a class="link" type="reset" routerLink="/Login">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>

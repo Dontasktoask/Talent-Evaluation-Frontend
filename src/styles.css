@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+/* @font-face {
+  font-family: "Cognizant Sans";
+  src: local("Cognizant Sans"),
+    url("assets/font/CognizantSans-Regular.ttf") format("truetype");
+} */
+/* html,
+body {
+  margin: 0;
+  font-family: "Roboto", Helvetica Neue, HelveticaNeue, Helvetica, sans-serif !important;
+  height: 100%;
+}
+.subtitle-1 {
+  height: 24px;
+  width: 90%;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: "Cognizant Sans";
+  font-size: 16px;
+  letter-spacing: 0.15px;
+  line-height: 24px;
+}
+.icon {
+  height: 24px;
+  width: 24px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+html{
+  font-family: arial;
+}
+
+.primary-heading{
+  color: #1a75bc;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.heading{
+  color: #404040;
+  font-size: 16px;
+  text-decoration: none;
+}
+.sub-heading{
+  color: #666666;
+  font-size: 16px;
+  text-decoration: none;
+}
+.all-other-text{
+  color: #666666;
+  font-size: 14px;
+  text-decoration: none;
+}
+/* Navigation header of each component */
+
+.subHeading { 
+  display: block; 
+  font-size: 16px; 
+  /* margin-top: 0.83em; 
+  margin-bottom: 0.83em;  */
+  background-color: #1a75bc;
+  color:white;  
+  
+} 

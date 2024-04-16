@@ -1,0 +1,211 @@
+<form class="form border-dark">
+  <div class="row m-0">
+    <div class="col-2 main">
+      <app-user-sidebar class="border border-top-0 border-bottom-0 border-start-0 border-2"></app-user-sidebar>
+    </div>
+    <div class="col-10 display-area mt-1">
+      <form class="form" [formGroup]="evaluateCandidateForm" (ngSubmit)="collection()">
+        <div class="subHeading col-12">
+          You are here: /My Account/Evaluate Candidate
+        </div>
+        <div class="row m-0">
+          <div class="col-12">
+            <div class="row m-0">
+              <!--Candidate Details Table-->
+
+              <a class="px-2 pb-1 primary-heading">Candidate Details</a>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Candidate ID</th>
+                    <th scope="col">Candidate Name</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Tech Stack</th>
+                    <th scope="col">Evaluation Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of evaluateData;" >
+                    <td>{{item.candidateId }}</td>
+                    <td>{{item.candidateFirstName}} {{item.candidateLastName}}</td>
+                    <td>{{item.soRole}}</td>
+                    <td>{{item.candidateStack }}</td>
+                    <td>{{item.evaluationDate}}</td>
+                    <!-- <td>{{item.evaluationDate | date : "dd-MMM-yyyy"}}</td> -->
+                  </tr>
+                </tbody>
+              </table>
+
+
+            </div>
+            <!-- <hr hr-black /> -->
+            <a class="px-2 pb-1 primary-heading">Evaluation Details</a>
+            <div class="row m-0 mt-1">
+              <!--Technical Skills-->
+              <div class="col-6 ml-2 mb-2">
+                <p class="text-center heading pb-2">Technical Skills</p>
+                <div class="mb-2 row">
+                  <label for="inputAssociateId" class="col-sm-5 sub-heading col-form-label">Product and
+                    Frameworks</label>
+
+                  <div class="col-sm-5">
+                      <mat-slider color="primary" min="0" max="5" step="1" showTickMarks discrete [displayWith]="formatLabel"
+                      formControlName="product_and_frameworks">
+                      <input matSliderThumb>
+                    </mat-slider>
+                    
+                  </div>
+                </div>
+
+                <div class="mb-2 row">
+                  <label for="inputAssociateId" class="col-sm-5 sub-heading col-form-label">Programming
+                    Languages</label>
+
+                  <div class="col-sm-5">
+                      <mat-slider color="primary" min="0" max="5" step="1" showTickMarks discrete [displayWith]="formatLabel"
+                      formControlName="programming_languages">
+                      <input matSliderThumb>
+                    </mat-slider>
+                  </div>
+                </div>
+
+                <div class="mb-2 row">
+                  <label for="inputAssociateId" class="col-sm-5 sub-heading col-form-label">Databases</label>
+
+                  <div class="col-sm-5">
+                      <mat-slider color="primary" min="0" max="5" step="1" [displayWith]="formatLabel"
+                      formControlName="engineering_maturity">
+                      <input matSliderThumb>
+                    </mat-slider>
+                  </div>
+                </div>
+
+                <div class="mb-2 row">
+                  <label for="inputFirstName" class="col-sm-5 sub-heading col-form-label">Platforms</label>
+
+                  <div class="col-sm-5">
+                      <mat-slider color="primary" min="0" max="5" step="1" [displayWith]="formatLabel"
+                      formControlName="platforms">
+                      <input matSliderThumb>
+                    </mat-slider>
+                  </div>
+                </div>
+
+                <div class="mb-2 row">
+                  <label for="inputEmailAddress" class="col-sm-5 sub-heading col-form-label" name="webMaster">Agile
+                    Maturity</label>
+
+                  <div class="col-sm-5">
+                      <mat-slider color="primary" min="0" max="5" step="1" [displayWith]="formatLabel"
+                      formControlName="agile_maturity">
+                      <input matSliderThumb>
+                    </mat-slider>
+                  </div>
+                </div>
+              </div>
+              <!--Soft Skills-->
+              <div class="col-6 ml-2 mb-2">
+                <p class="text-center heading pb-2">Soft Skills</p>
+                <div class="mb-2 row">
+                  <label for="inputCandidateStack" class="col-sm-5 sub-heading col-form-label">Communication</label>
+
+                  <div class="col-sm-5">
+                      <mat-slider color="primary" min="0" max="5" step="1" [displayWith]="formatLabel"
+                      formControlName="communications">
+                      <input matSliderThumb>
+                    </mat-slider>
+                  </div>
+                </div>
+
+                <div class="mb-2 row">
+                  <label for="inputCandidateStack" class="col-sm-5 sub-heading col-form-label">Collaboration</label>
+
+                  <div class="col-sm-5">
+                      <mat-slider color="primary" min="0" max="5" step="1" [displayWith]="formatLabel"
+                      formControlName="collaboration">
+                      <input matSliderThumb>
+                    </mat-slider>
+                  </div>
+                </div>
+
+                <div class="mb-2 row">
+                  <label for="inputFirstName" class="col-sm-5 sub-heading col-form-label">Problem Solving</label>
+
+                  <div class="col-sm-5">
+                      <mat-slider color="primary" min="0" max="5" step="1" [displayWith]="formatLabel" formControlName="problem_solving">
+                        <input matSliderThumb>
+                      </mat-slider>
+                  </div>
+                </div>
+
+                <div class="mb-2 row">
+                  <label for="inputFirstName" class="col-sm-5 sub-heading col-form-label">Ledership</label>
+
+                  <div class="col-sm-5">
+                    <mat-slider color="primary" min="0" max="5" step="1" [displayWith]="formatLabel"
+                      formControlName="leadership">
+                      <input matSliderThumb>
+                    </mat-slider>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p class="DetailedFeedback heading">Detailed Qualitative Feedback</p>
+            <div class="row col-12 mt-1">
+              <!--Detailed Feedback-->
+              <div class="col-10">
+                <div class="mb-1 row">
+                  <input minlength="50" maxlength="200" class="form-control border-dark text" aria-label="With textarea"
+                    id="detailed_feedback" formControlName="detailed_feedback">
+                    <span class="all-other-text text-danger text-nowrap" *ngIf="detailed_feedback && detailed_feedback.invalid && detailed_feedback.touched">Enter
+                      candidate feedback</span>
+                </div>
+                
+              </div>
+
+              <!--To Feedback-->
+              <div class="col-2">
+                <div class="mb-1 row">
+                  <div class="col-sm-8">
+                    <div class="feedback col-4 border-dark">
+                      <div class="ml-2">
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="feedback" id="exampleRadios1"
+                            value="Selected" formControlName="feedback" />
+                          <label class="form-check-label sub-heading" for="exampleRadios1">
+                            Selected
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="feedback" id="exampleRadios2"
+                            value="Rejected" formControlName="feedback" />
+                          <label class="form-check-label sub-heading" for="exampleRadios2">
+                            Rejected
+                          </label>
+                        </div>
+                        
+                      </div>
+                       
+                    </div>
+                    <span class="all-other-text text-danger text-nowrap" formControlName="feedback"
+                        *ngIf="feedback && feedback.invalid && feedback.touched">Select status</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-grid gap-2 col-3 mx-auto mt-3 mb-2 justify-content-md-center">
+            <button class="btn btn-outline-hola me-md-2" (click)="deletelocalstorage()" type="reset">
+              Cancel
+            </button>
+            <button class="btn btn-outline-hola me-md-2" type="submit" [disabled]="evaluateCandidateForm.invalid">
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</form>

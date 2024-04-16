@@ -1,0 +1,142 @@
+<form class="form">
+  <div class="row m-0">
+    <div class="col-2 main">
+      <app-sidebar class="border border-top-0 border-bottom-0 border-start-0 border-2"></app-sidebar>
+    </div>
+    <div class="col-10 display-area mt-1 txt-prop">
+      <!--Alert Messages-->
+
+    <div class="alert alert-danger alert-dismissible fade show" *ngIf="fail" role="alert">
+      <p>No question file uploaded</p>
+      <a type="button-1" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+    </div>
+    <div class="alert alert-success alert-dismissible fade show" *ngIf="uploadF" role="alert">
+      <p>File has been successfully uploaded.</p>
+      <a type="button-1" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+    </div>
+    <div class="alert alert-success alert-dismissible fade show" *ngIf="success" role="alert">
+      <p>File has been deleted successfully.</p>
+      <a type="button-1" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+    </div>
+
+      <form class="form border border-top-0 border-end-0 border-start-0 border-2" (ngSubmit)="uploadFile()" [formGroup]="uploadQuestionForm">
+        <div class="subHeading col-12 text-start">
+          You are here: My Account/Upload Questions
+        </div>
+        <div class="row m-0">
+          <div class="col-6 mb-2 row">
+            <label for="inputRole" class="col-sm-4 sub-heading col-form-label text-nowrap">Technology /
+              Framework:</label>
+            <div class="col-sm-6">
+              <select class="form-select" aria-label="Default select example" id="technology_name"
+                formControlName="technology_name">
+                <option selected disabled>Choose...</option>
+                <option>Angular</option>
+                <option>Vue</option>
+                <option>Java</option>
+                <option>Spring Boot</option>
+                <option>AWS</option>
+                <!--Display Error Message-->
+              </select>
+
+              <div class="all-other-text text-danger text-nowrap" *ngIf="uploadQuestionForm.controls['technology_name'].invalid && (uploadQuestionForm.controls['technology_name'].dirty || uploadQuestionForm.controls['technology_name'].touched || (fail && technology_name.errors))">
+                <small *ngIf="uploadQuestionForm.controls['technology_name'].errors?.['required']">Select Technology/Framework</small>
+              </div>
+              <!-- <span class="all-other-text text-danger"
+                *ngIf="technology_name && technology_name.invalid && technology_name.touched">Select
+                Technology/Framework
+
+              </span> -->
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="mb-2 row">
+              <label for="inputFirstName" class="col-sm-4 sub-heading col-form-label text-nowrap">File Upload:</label>
+
+              <div class="col-sm-8">
+                <!-- <input (change)="fileUpload($event)" accept=".xlsx,.docx" type="file" class="form-control filled" id="exampleFormControlFile1"
+                  formControlName="file_name" /> -->
+                  <input  accept=".xlsx,.docx" type="file" class="form-control filled" id="exampleFormControlFile1"
+                  formControlName="file_name" />
+                <!--maxFileSize="10000"-->
+                <div class="all-other-text text-danger" *ngIf="uploadQuestionForm.controls['file_name'].invalid && (uploadQuestionForm.controls['file_name'].dirty  || (fail && submitted && file_name.errors))">
+                  <small *ngIf="uploadQuestionForm.controls['file_name'].errors?.['required'] && uploadQuestionForm.controls['file_name'].untouched">Select a file. Accepted file format is xlsx, docx</small>
+                  <small *ngIf="uploadQuestionForm.controls['file_name'].errors?.['required'] && uploadQuestionForm.controls['file_name'].touched">Accepted file format is xlsx, docx</small>
+                  <!-- <small *ngIf="uploadQuestionForm.controls['file_name'].errors?.['required'] && uploadQuestionForm.controls['file_name'].invalid ">Accepted file size is upto 10 MB</small> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-grid gap-2 col-3 mx-auto mt-5 pb-4 justify-content-md-center">
+          <!-- <button class="btn btn-outline-hola  me-md-2" type="reset">
+            Cancel
+          </button> -->
+          <button class="btn pb-2" type="submit">
+            Upload
+          </button>
+        </div>
+      </form>
+
+
+      <p class="text-start pt-4 pb-1 primary-heading">Uploaded Files</p>
+      <table class="table">
+        <thead>
+          <tr >
+            <th class="heading" scope="col">Technology</th>
+            <th class="heading" scope="col">File Name</th>
+            <th class="heading" scope="col">Uploaded By</th>
+            <th class="heading" scope="col">Updated Timestamp</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr *ngFor="let item of paginatedData; let index = index; let file of uploadedFileNames">
+            <td class="sub-heading">{{ item.AId }}</td>
+            <td class="sub-heading">{{file}}</td>
+            <td class="sub-heading">{{ item.updated }}</td>
+            <td class="sub-heading">{{ item.time }}</td>
+            <td class="sub-heading"><a href="" (click)="openPopup()">Delete</a></td>
+          </tr> -->
+          <tr>
+            <td class="sub-heading">Angular</td>
+            <td class="sub-heading">Frontedn.xlsx</td>
+            <td class="sub-heading">Jhon More</td>
+            <td class="sub-heading">12-Nov-23</td>
+            <td class="sub-heading delete"><a (click)="fileDelete()">Delete</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+
+  <!--Pop Modal For Delete Button-->
+  <ng-template #deleteFile>
+    <div class="modal-header border border-top-0 border-end-0 border-start-0 border-2" id="Border">
+      <h2 mat-dialog-title class="pt-2 primary-heading txt-prop">Delete Uploaded File</h2>
+      <a mat-button mat-dialog-close type="button" class="btn-close pt-2"></a>
+    </div>
+
+    <mat-dialog-content>
+      <form>
+        <div class="row m-0 txt-prop">
+          <div>
+            <p class="text-center pt-3 pb-5">Are you sure, you want to delete the uploaded file?</p>
+            <div class="d-grid gap-2 col-6 mx-auto mb-2">
+              <button mat-dialog-close class="btn btn-outline-hola me-md-2" type="submit" (click)="removeFile()">
+                Yes, I Want To Delete
+              </button>
+              <a mat-button mat-dialog-close type="button">
+                No, Thanks
+              </a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </mat-dialog-content>
+  </ng-template>
+</form>

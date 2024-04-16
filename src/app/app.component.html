@@ -1,0 +1,10 @@
+<div class="container-fluid-g">
+  <app-navbar></app-navbar>
+  <main>
+      <!-- <app-user-sidebar [ngClass]="{'d-none':role === 'User logged in successfully - Admin'}"></app-user-sidebar>
+      <app-sidebar [ngClass]="{'d-none':role === 'User logged in successfully - Evaluator'}" ></app-sidebar> -->
+      <div class="display-area">
+        <router-outlet></router-outlet>
+      </div>
+  </main>
+</div>

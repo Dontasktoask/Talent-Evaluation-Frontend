@@ -1,0 +1,117 @@
+.table {
+    width: 100%;
+}
+
+/* .main {
+    left: 240px;
+    width: calc(100% - 250px);
+} */
+button {
+    width: 248px;
+    background-color: #1a75bc;
+    color: azure;
+    font-weight: bold;
+}
+
+button:hover {
+    width: 248px;
+    background-color: #1a75bc;
+    color: azure;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.subHeading {
+    display: block;
+    font-size: 16px;
+    padding-left: 10px;
+    margin-bottom: 0.83em;
+    background-color: #1a75bc;
+    color: white;
+}
+
+.delete {
+    color: #1a75bc;
+}
+
+.delete:hover {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+thead {
+    border: white;
+}
+
+tr {
+    border-bottom: #404040;
+    border-style: dotted;
+}
+
+form p {
+    text-align: center;
+}
+
+#Border {
+    border-bottom: solid 1px #404040;
+}
+
+.main {
+    position: absolute;
+    width: 100%;
+    top: 5rem;
+    z-index: 1;
+    padding-left: 0%;
+}
+
+.display-area {
+    position: relative;
+    left: 200px;
+    /* width: 100%; */
+    width: calc(100% - 200px);
+    padding-top: 5rem;
+    padding-left: 20px;
+}
+
+app-sidebar {
+    position: fixed;
+    height: calc(100% - 5rem);
+    background-color: white;
+    overflow-x: hidden;
+    z-index: 1;
+    white-space: nowrap;
+}
+
+.txt-prop {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.border {
+    border-bottom: grey;
+}
+
+.filled {
+    background-color: rgb(207, 207, 206);
+}
+
+div .alert {
+    text-align: center;
+    left: 30%;
+
+}
+
+.alert {
+    width: 400px;
+    height: 60px;
+
+}
+
+.button-1 {
+    height: 10px;
+    width: 10px;
+    background-color: azure;
+}

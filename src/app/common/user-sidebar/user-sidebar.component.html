@@ -1,0 +1,13 @@
+<!--Code For user Sidebar with all Component Data-->
+<nav *ngIf="nav.visible">
+<div class="side-nav-content">
+    <ul class="nav-list" *ngFor="let item of list">
+      <li class="nav-list-item border border-top-0 border-end-0 border-start-0 border-2" routerLink="/{{item.root}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        <!-- <img src={{item.img}} alt="Logo"> -->
+        <span>
+          <a>{{item.name}}</a>
+        </span>
+      </li>
+    </ul>
+</div>
+</nav>

@@ -1,0 +1,97 @@
+<div class="row m-0 ">
+  <div class="col-2 main">
+    <app-sidebar class="border border-top-0 border-bottom-0 border-start-0 border-2"></app-sidebar>
+  </div>
+  <div class="col-10 display-area mt-1">
+    <div class="subHeading col-12">
+      You are here: My Account/Home
+   </div>
+    <!--Completed Evaluation-->
+    <div class="px-2">
+      <div class="row">
+        <div class="col primary-heading">
+          <a class="col pb-3 primary-heading">Completed Evaluations</a>
+        </div>
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+          <a class="box btn-outline-hola">
+            <input type="text" placeholder="Search.." [(ngModel)]="searchText"  name="search">
+            <div class="btn search-btn"  type="submit">
+              <img class="search-icon"
+              src="https://cdn-icons-png.flaticon.com/512/9195/9195894.png"/>
+            </div>
+          </a>  
+        </div>
+      </div>
+    </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" class="heading">SO ID</th>
+            <th scope="col" class="heading">Associate ID</th>
+            <th scope="col" class="heading">Associate Name</th>
+            <th scope="col" class="heading">Role</th>
+            <th scope="col" class="heading">Tech Stack</th>
+            <th scope="col" class="heading">Evaluation Date</th>
+            <th scope="col" class="heading">Evaluation By</th>
+            <th scope="col" class="heading">Status</th>
+             <!-- <th scope="col" class="heading">Feedback</th> -->
+            <!--<th scope="col" class="heading">Detailed Feedback</th> -->
+            <!-- <th scope="col" class="heading">SO Role</th> -->
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let item of completedData | search: searchText | filter:'asc':'evaluationDate' | paginate: { itemsPerPage: 5, currentPage: c, id:'CompletedData'}" >            
+            <td scope="row" class="sub-heading">{{item.soId}}</td>
+            <td scope="row" class="sub-heading">{{item.candidateId}}</td>
+            <td scope="row" class="sub-heading">{{item.candidateFirstName}} {{item.candidateLastName}}</td>
+            <td scope="row" class="sub-heading">{{item.soRole}}</td>
+            <td scope="row" class="sub-heading">{{item.candidateStack}}</td>
+            <td scope="row" class="sub-heading">{{item.evaluationDate}}</td>
+            <td scope="row" class="sub-heading">{{item.evaluatorId}}</td>
+            <td scope="row" class="sub-heading">{{item.evaluationStatus}}</td>
+            <!-- <td scope="row" class="sub-heading">{{item.feedback}}</td> -->
+            <!--  <td scope="row" class="sub-heading">{{item.detailedFeedback}}</td>-->
+          </tr>
+        </tbody>
+      </table>
+      <br />
+    
+      <pagination-controls class="pagination" (pageChange)="c = $event" id="CompletedData"></pagination-controls>
+    <div>
+      <!--Pending Evaluation--> 
+      <a class="px-2 pb-3 primary-heading">Pending Evaluations</a>
+      <br />
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col" class="heading">SO ID</th>
+            <th scope="col" class="heading">Associate ID</th>
+            <th scope="col" class="heading">Associate Name</th>
+            <th scope="col" class="heading">Role</th>
+            <th scope="col" class="heading">Tech Stack</th>
+            <th scope="col" class="heading">Evaluation Date</th>
+            <th scope="col" class="heading">Evaluation By</th>
+            <th scope="col" class="heading">Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let item of pendingData | search: searchText | filter:'asc':'evaluationDate' | paginate: { itemsPerPage: 5, currentPage: p, id:'PendingData'}" >
+            <td scope="row" class="sub-heading">{{item.soId}}</td>
+            <td scope="row" class="sub-heading">{{item.candidateId}}</td>
+            <td scope="row" class="sub-heading">{{item.candidateFirstName}} {{item.candidateLastName}}</td>
+            <td scope="row" class="sub-heading">{{item.soRole}}</td>
+            <td scope="row" class="sub-heading">{{item.candidateStack}}</td>
+            <td scope="row" class="sub-heading">{{item.evaluationDate}}</td>
+            <td scope="row" class="sub-heading">{{item.evaluatorId}}</td>
+            <td scope="row" class="sub-heading">{{item.evaluationStatus}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <br />
+      <pagination-controls class="pagination" (pageChange)="p = $event" id="PendingData"></pagination-controls>   
+    </div>
+  </div>
+</div>

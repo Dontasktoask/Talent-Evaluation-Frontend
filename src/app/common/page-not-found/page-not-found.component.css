@@ -1,0 +1,18 @@
+.img{
+  height: 88vh;
+  text-align: center;
+}
+.image{
+    max-width: 500px;
+    max-height: 500px;
+    margin-top: 50px;
+}
+.img:hover .img-description{
+    visibility: visible;
+}
+.img-description{
+    visibility: hidden;
+    font-weight: bold;
+    font-size: large;
+    /* opacity: 1; */
+}

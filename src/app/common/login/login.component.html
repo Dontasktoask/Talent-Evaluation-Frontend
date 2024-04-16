@@ -1,0 +1,52 @@
+<div class="container justify-content-center">
+  <div class="form-container pb-3 display-area">
+
+    <!--Alert Messages-->
+
+    <div class="alert alert-danger alert-dismissible fade show" *ngIf="fail" role="alert">
+      <p>Your User ID or password was incorrect. Please try again.</p>
+      <a type="button-1" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+    </div>
+    <div class="alert alert-success alert-dismissible fade show" *ngIf="success" role="alert">
+      <p>Login Successful !.</p>
+      <a type="button-1" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+    </div>
+
+    <form [formGroup]="login" (ngSubmit)="collection()" class="col-10 border border-2  mt-5 pt-3  pb-3">
+      <h2 class="text-center text-dark pb-3 txt-prop">Log in to your account</h2>
+
+      <div class="d-grid gap-2 col-5 mx-auto mt-2 mb-2">
+        <div class="mb-3 ">
+          <input type="text" class="form-control" id="userName" formControlName="userName" #Name
+            placeholder="Enter Your Email ID/ User ID" />
+
+          <!-- <span class="all-other-text text-danger text-nowrap" *ngIf="fail && userName.errors">User Id is required</span> -->
+          <span class="all-other-text text-danger text-nowrap"
+            *ngIf="userName.errors?.['required']&& (userName.touched || userName.dirty) || (fail && userName.errors)">User Id is required</span>
+        </div>
+
+        <div class="mb-3">
+          <input type="password" class="form-control" id="password" formControlName="password"
+            placeholder="Enter the Password" />
+
+          <!-- <div class="all-other-text text-danger text-nowrap" *ngIf="fail && password.errors">Password is required
+          </div> -->
+          <!-- <span class="all-other-text text-danger text-nowrap" *ngIf="fail && password.errors">Password is required</span> -->
+          <span class="all-other-text text-danger text-nowrap"
+            *ngIf="password.errors?.['required'] && (password.touched || password.dirty) || (fail && password.errors) ">Password is required</span>
+
+        </div>
+      </div>
+
+
+
+      <div class="d-grid gap-2 col-4 mx-auto mt-2 mb-2">
+        <button class="btn pb-2" type="submit" (click)="sendMessage(Name)">Submit</button>
+
+        <a class="link" type="reset" (click)="resetForm()">Cancel</a>
+        <a class="pt-2 register text-nowrap mx-auto mt-2 mb-2" routerLink="/Register">Register Now</a>
+      </div>
+    </form>
+
+  </div>
+</div>

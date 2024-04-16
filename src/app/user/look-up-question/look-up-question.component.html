@@ -1,0 +1,82 @@
+<div class="row m-0">
+  <div class="col-2 main">
+    <app-user-sidebar class="border border-top-0 border-bottom-0 border-start-0 border-2"></app-user-sidebar>
+  </div>
+  <div class="col-10 display-area mt-1">
+    <form  fomGroup="lookUpForm">
+      <div class="subHeading col-12">
+        You are here: /My Account/Lookup Questions
+      </div>
+      <div class="row m-0">
+        <div class="col-6 mb-2 row">
+          <label for="inputRole" class="col-sm-5 col-form-label heading">Technology/Framework</label>
+          <div class="col-sm-6">
+            <select class="form-select"  id="technology" name="technology">
+              <option disabled value="">Select an Option</option>
+              <option value="Node.js">Node.js</option>
+              <option value="React">React</option>
+              <option value="Mean">Mean</option>
+              <option value="Java/Vue">Java/Vue</option>
+              <option value="NetCore">.NetCore</option>
+              <option value="Docker">Docker</option>
+              <option value="Kubernets">Kubernets</option>
+              <option value="Angular">Angular</option>
+              <option value="Ruby">Frontend</option>
+              <option value="Django">Django</option>
+              <!--Display Error Message-->
+            </select>
+            <span class="all-other-text text-danger" *ngIf="technology && technology.invalid && technology.touched">
+              Technology is required
+            </span>
+          </div>
+        </div>
+
+        <div class="col-6 mb-2 row">
+          <label for="inputRole" class="col-sm-5 col-form-label heading">Filter the question</label>
+          <div class="col-sm-6" name="level">
+            <select class="form-select"  id="level" name="level">
+              <option disabled value="">Select a Level</option>
+              <option value="Easy">Easy</option>
+              <option value="Medium">Medium</option>
+              <option value="Hard">Hard</option>
+            </select>
+            <!--Display Error Message-->
+            <span class="all-other-text text-danger" *ngIf="level && level.invalid && level.touched">
+              Field is required
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="d-grid col-2 mx-auto mt-5 mb-2 justify-content-md-center">
+        <button class="btn btn-outline-hola me-md-2" type="submit" >
+          Submit
+        </button>
+      </div>
+
+      <hr hr-black />
+
+
+      <p><strong class="sub-heading">Question:</strong> What is HTML? </p>
+      <br /><br />
+      <p><strong class="sub-heading ">Answer:</strong>
+
+        HTML stands for Hyper Text Markup Language.
+        HTML is the standard markup language for creating Web pages. HTML
+        describes the structure of a Web page, and consists of a series of
+        elements. HTML elements tell the browser how to display the content.
+      </p>
+      <br />
+      <div class="d-grid gap-4 d-md-flex justify-content-md-center">
+        <button class="btn btn-outline-primary me-md-2" type="submit">
+          Previous
+        </button>
+
+        <button class="btn btn-outline-primary me-md-2" type="submit">Next</button>
+      </div>
+    </form>
+
+    <hr hr-black />
+
+
+  </div>
+</div>

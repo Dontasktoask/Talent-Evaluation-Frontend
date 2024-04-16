@@ -1,0 +1,171 @@
+<div class="row m-0">
+  <div class="col-2 main">
+    <app-sidebar class="border border-top-0 border-bottom-0 border-start-0 border-2"></app-sidebar>
+  </div>
+  <div class="col-10 display-area mt-1">
+    <div class="subHeading col-12">
+      You are here: My Account/User Managment
+    </div>
+    <div class="px-2">
+      <div class="row">
+        <div class="col primary-heading">
+          <a class="col pb-3 primary-heading">List Users</a>
+        </div>
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+          <a class="box btn-outline-hola">
+            <input type="text" placeholder="Search.." [(ngModel)]="searchText" name="search">
+            <div class="btn search-btn" type="submit">
+              <img class="search-icon" src="https://cdn-icons-png.flaticon.com/512/9195/9195894.png" />
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="heading" scope="col">Associate Id</th>
+          <th class="heading" scope="col">Associate Name</th>
+          <th class="heading" scope="col">Project Role</th>
+          <th class="heading" scope="col">System Role</th>
+          <th class="heading" scope="col">Updated By</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of users | search: searchText |filter:'asc':'associateId' | paginate: { itemsPerPage: 5, currentPage: p}">
+          <td class="sub-heading">
+            <a class="popup" (click)="getUserData(item.associateId)">{{item.associateId}}</a>
+          </td>
+          <td class="sub-heading">{{ item.firstName }} {{ item.lastName }}</td>
+          <td class="sub-heading">{{ item.projectRole }}</td>
+          <td class="sub-heading">{{ item.systemRole }}</td>
+          <td class="sub-heading"></td>
+          <!--Have to put the name of admin who update the details-->
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
+<!-- Modal -->
+
+
+<ng-template #updateDialog>
+
+  <div class="modal-header" id="Border">
+    <h2 mat-dialog-title class="pt-1 primary-heading">Update Users</h2>
+    <!-- <a mat-button mat-dialog-close type="button" class="btn-close pt-2"></a> -->
+  </div>
+  <form (ngSubmit)="collection()">
+
+    <mat-dialog-content >
+      <div class="row m-0">
+        <div class="col-6">
+          <div class="mb-3 row">
+            <label for="inputAssociateId" class="col-sm-4 sub-heading col-form-label">Associate Id:</label>
+            <div class="col-sm-8">
+  
+              <input [(ngModel)]="associateData.associateId" type="text" disabled class="form-control" id="inputAssociateId"
+                name="associateId" readonly/>
+              <!-- <span *ngIf="vassid && vassid.invalid && vassid.touched" Class="all-other-text text-danger">Enter
+              Valid data</span> -->
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputFirstName" class="col-sm-4 sub-heading col-form-label">First Name:</label>
+            <div class="col-sm-8">
+              <input [(ngModel)]="associateData.firstName" type="text" disabled class="form-control" id="inputFirstName"
+                name="firstName" readonly/>
+              <!-- <span *ngIf="vfname && vfname.invalid && vfname.touched" Class="all-other-text text-danger">Enter
+              Valid data</span> -->
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputProjectRole" class="col-sm-4 sub-heading col-form-label">Project Role:</label>
+            <div class="col-sm-8">
+              <select class="form-select" aria-label="Default select example" id="inputProjectRole"
+                [(ngModel)]="associateData.projectRole" name="projectRole">
+                <option disabled value="">Select an Option</option>
+              <option value="Architect">Architect</option>
+              <option value="Business Analyst">Business Analyst</option>/
+              <option value="Developer">Developer</option>
+              <option value="Engineering Manager">Engineering Manager</option>
+              <option value="QA Engineer">QA Engineer</option>
+              <option value="QA Lead">QA Lead</option>
+              <option value="Scrum Master">Scrum Master</option>
+              <option value="Sr Developer">Sr Developer</option>
+              <option value="Team Lead">Tech Lead</option>
+              </select>
+              <span *ngIf="
+                vprojectrole &&
+                vprojectrole.invalid &&
+                vprojectrole.touched
+              " class="all-other-text text-danger">Select a Project Role</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-6">
+          <div class="mb-3 row">
+            <label for="inputTechStack" class="col-sm-4 sub-heading col-form-label">Associate Stack:</label>
+            <div class="col-sm-8">
+              <select class="form-select" aria-label="Default select example" id="inputTechStack" [(ngModel)]="associateData.techStack"
+                 name="techStack">
+                <option disabled value="">Select an Option</option>
+              <option value="Agile">Agile</option>
+              <option value="Automation">Automation</option>
+              <option value="Java FSE">Java FSE</option>
+              <option value="Manual Testing">Manual Testing</option>
+              <option value="MEAN (MongoDB, Express.js, Angular, Node.js)">.MEAN (MongoDB, Express.js, Angular, Node.js)</option>
+              <option value="MERN (MongoDB, Express.js, React, Node.js)">MERN (MongoDB, Express.js, React, Node.js)</option>
+              <option value=".Net FSE">.Net FSE</option>
+              <option value="Node.js">Node.js</option>
+              <option value="Python-Django">Python-Django</option>
+              <option value="Others">Others</option>
+              </select>
+              <!-- <span *ngIf="vassst && vassst.invalid && vassst.touched" class="all-other-text text-danger">Select
+              Technology Stack</span> -->
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputLastName" class="col-sm-4 sub-heading col-form-label">Last Name:</label>
+            <div class="col-sm-8">
+              <input [(ngModel)]="associateData.lastName" type="text" disabled class="form-control" id="inputLastName"
+                name="inputLastName" readonly/>
+              <!-- <span *ngIf="vlname && vlname.invalid && vlname.touched" class="all-other-text text-danger">Enter
+              Valid data</span> -->
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputSystemRole" class="col-sm-4 sub-heading col-form-label">
+              System Role:</label>
+            <div class="col-sm-8">  
+              <select class="form-select" aria-label="Default select example" id="inputSystemRole"
+                [(ngModel)]="associateData.systemRole" name="systemRole">
+                <option disabled value="">Please select one</option>
+                <option value="Admin">Admin</option>
+                <option value="Evaluator">Evaluator</option>
+              </select>
+              <!-- <span *ngIf="
+                vsystemrole &&
+                vsystemrole.invalid &&
+                vsystemrole.touched
+              " class="all-other-text text-danger">Select a System Role</span> -->
+            </div>
+          </div>
+        </div>
+        <div class="d-grid gap-2 col-4 mx-auto mt-3 mb-2 justify-content-md-center">
+          <button class="btn btn-outline-hola me-md-2" type="submit" mat-dialog-close [disabled]="userForm.invalid">Submit</button>
+          <button mat-button mat-dialog-close type="button" class="btn btn-outline-hola me-md-2">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </mat-dialog-content>
+  </form>
+</ng-template>
+

@@ -1,0 +1,34 @@
+<nav class="navbar border border-top-0 border-end-0 border-start-0 border-4">
+  <div class="container-fluid">
+    <!--Message Box msg-->
+
+    
+    <div class="d-flex gap-2">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqxjLUADLON0jNcXWgxILs0EaPb3TgVKfX8UkvAcObdg&s"
+        href="#" alt="logo-icon" class="logo" />
+      <p class="h4 pt-3" routerLink="/Register">Talent Evaluation System (TalEval)</p>
+
+      <div class="alert alert-success alert-dismissible fade show" *ngIf="success" role="alert">
+        <p>User Logout Successfully</p>
+        <a type="button-1" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+      </div>
+
+    </div>
+
+    
+
+    <nav *ngIf="navbar.visible">
+
+      
+      <div class="d-flex gap-2">
+        <img src="https://cdn-icons-png.flaticon.com/512/13403/13403037.png" alt="user-icon"
+          class="user primary-heading" />
+          
+        <p class="primary-heading">{{user}}|</p>
+
+        <p class="primary-heading" type="submit" (click)="collection()">
+          Signout</p>
+      </div>
+    </nav>
+  </div>
+</nav>

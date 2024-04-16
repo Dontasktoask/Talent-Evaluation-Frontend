@@ -1,0 +1,90 @@
+.container {
+  height: 88vh;
+}
+
+.DetailedFeedback {
+  margin-left: 10px;
+}
+
+#detailed_feedback {
+  border-radius: 20px;
+  height: 90px;
+}
+
+.feedback {
+  border-radius: 20px;
+  height: 90px;
+  width: 120px;
+  padding: 15px;
+  border: 1px solid #666666;
+}
+
+.row {
+  margin-left: 3px;
+}
+
+button {
+  width: 248px;
+  color: #1a75bc;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #1a75bc;
+  cursor: pointer;
+  color: azure;
+}
+
+.btn-outline-hola {
+  color: #1a75bc;
+  border: 1px solid #1a75bc;
+}
+
+.subHeading {
+  display: block;
+  font-size: 16px;
+  padding-left: 10px;
+  margin-bottom: 0.83em;
+  background-color: #1a75bc;
+  color: white;
+}
+thead{
+  border: white;
+}
+tbody{
+  border-bottom: #404040;
+  border-style: dotted;
+}
+mat-slider {
+  width: 200px;
+}
+.main{
+  position:absolute;
+  width: 100%;
+  top: 5rem;
+  z-index: 1;
+  padding-left: 0%;
+}
+
+.display-area{
+  position:relative;
+  left: 200px;
+  /* width: 100%; */
+  width: calc(100% - 200px);
+  padding-top: 5rem;
+  padding-left: 20px;
+}
+
+app-user-sidebar{  
+  position: fixed;
+  height: calc(100% - 5rem);
+  border-right: solid 1px #404040;
+  background-color: white;
+  overflow-x:hidden;
+  z-index: 1;
+  white-space: nowrap;
+ 
+
+}
+
+

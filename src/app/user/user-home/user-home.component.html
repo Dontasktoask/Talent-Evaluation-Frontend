@@ -1,0 +1,112 @@
+<div class="row m-0 ">
+  <div class="col-2 main">
+    <app-user-sidebar class="border border-top-0 border-bottom-0 border-start-0 border-2"></app-user-sidebar>
+  </div>
+  <div class="col-10 display-area mt-1">
+    <div class="subHeading col-12">
+      You are here: /My Account/Home
+    </div>
+    <div>
+      <!--Pending Evaluation-->
+      <div class="px-2">
+        <div class="row">
+          <div class="col primary-heading">
+            <a class="col pb-3 primary-heading">Pending Evaluations</a>
+          </div>
+          <div class="col-sm">
+          </div>
+          <div class="col-sm">
+            <form class="box btn-outline-hola">
+              <input type="text" placeholder="Search.." [(ngModel)]="searchText" name="search">
+              <div class="btn search-btn" type="submit">
+                <img class="search-icon" src="https://cdn-icons-png.flaticon.com/512/9195/9195894.png" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!--Pending Evaluation Table-->
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="heading" scope="col">SO ID</th>
+            <th class="heading" scope="col">Associate Id</th>
+            <th class="heading" scope="col">Associate Name</th>
+            <th class="heading" scope="col">Role</th>
+            <th class="heading" scope="col">Tech Stack</th>
+            <th class="heading" scope="col">Evaluation Date</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="pendingData?.length !==0 ">
+          <tr
+            *ngFor="let item of pendingData | search: searchText | paginate: { itemsPerPage: 5, currentPage: p, id:'PendingData'}">
+            <td class="sub-heading" scope="row">{{ item.soId }}
+          <tr class="">
+            <p href="#">View Resume</p>
+          </tr>
+          </td>
+          <td class="sub-heading" scope="row">{{ item.candidateId }}
+            <tr class="popup">
+              <p (click)="getEvaluationData(item.evaluationId)">Quick Evaluations</p>
+            </tr>
+          </td>
+          <td class="sub-heading" scope="row">{{item.candidateFirstName}} {{item.candidateLastName}}
+            <tr class="">
+              <p routerLink="/Lookup-question">LookUp Question</p>
+            </tr>
+          </td>
+          <td class="sub-heading" scope="row">{{ item.soRole}}</td>
+          <td class="sub-heading" scope="row">{{ item.candidateStack }}</td>
+          <td class="sub-heading" scope="row">{{ item.evaluationDate }}</td>
+          <!-- <td class="sub-heading" scope="row">{{ item.evaluationDate | date : "dd-MMM-yyyy"}}</td> -->
+          </tr>
+        </tbody>
+        <tbody *ngIf="pendingData?.length === 0">
+          <tr>
+            <td colspan="3" class="no-data-available">No records found</td>
+          </tr>
+        </tbody>
+      </table>
+      <br />
+      <pagination-controls (pageChange)="p = $event" id="PendingData"></pagination-controls>
+      <!--Completed Evaluation-->
+
+      <a class="px-2 pb-3 primary-heading">Completed Evaluations</a>
+      <br />
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="heading" scope="col">SO ID</th>
+            <th class="heading" scope="col">Associate Id</th>
+            <th class="heading" scope="col">Associate Name</th>
+            <th class="heading" scope="col">Role</th>
+            <th class="heading" scope="col">Tech Stack</th>
+            <th class="heading" scope="col">Evaluation Date</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="completedData?.length !==0 ">
+          <tr
+            *ngFor="let item of completedData | paginate: { itemsPerPage: 5, currentPage: c, id:'CompletedData' }; let index = index" >
+            <!-- <tr *ngFor="let item of data; let index = index"> -->
+            <td class="sub-heading" scope="row">{{ item.soId}}</td>
+            <td class="sub-heading" scope="row">{{ item.candidateId }}</td>
+            <td class="sub-heading" scope="row">{{ item.candidateFirstName}} {{item.candidateLastName}}
+            <td class="sub-heading" scope="row">{{ item.soRole}}</td>
+            <td class="sub-heading" scope="row">{{ item.candidateStack }}</td>
+            <td class="sub-heading" scope="row">{{ item.evaluationDate }}</td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="completedData?.length === 0">
+          <tr>
+            <td colspan="3" class="no-data-available">No records found</td>
+          </tr>
+        </tbody>
+      </table>
+      <br />
+      <pagination-controls (pageChange)="c = $event" id="CompletedData"></pagination-controls>
+      
+    </div>
+  </div>
+</div>

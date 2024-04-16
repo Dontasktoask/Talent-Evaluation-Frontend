@@ -1,0 +1,83 @@
+.container {
+  width: auto;
+}
+
+.form-control {
+  width: 320px;
+}
+
+select {
+  width: 320px;
+}
+
+button {
+  width: 248px;
+  background-color: #1a75bc;
+  color: azure;
+  font-weight: bold;
+}
+
+button:hover {
+  width: 248px;
+  background-color: #1a75bc;
+  color: azure;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-outline-hola {
+  border: 1px solid #1a75bc;
+
+}
+
+.link {
+  color: #1a75bc;
+  text-decoration: none;
+  font-weight: bolder;
+  text-align: center;
+
+}
+
+.border {
+  color: gray;
+}
+
+.register {
+  color: #1a75bc;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.txt-prop {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-weight: bold;
+}
+
+div a {
+  text-decoration: none;
+  color: #1a75bc;
+}
+
+.display-area {
+  position: relative;
+  left: 200px;
+  width: calc(100% - 200px);
+  padding-top: 80px;
+}
+div .alert{
+  text-align: center;
+  left: 20%;
+  
+}
+.alert{
+  width: 400px;
+  height: 60px;
+ 
+}
+.button-1{
+  height: 10px;
+  width: 10px;
+  background-color: azure;
+}

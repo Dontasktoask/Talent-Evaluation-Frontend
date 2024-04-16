@@ -1,0 +1,21 @@
+mat-form-field {
+    margin-right: 12px;
+}
+
+.message {
+    color: white;
+}
+
+.mat-snack-bar-container {
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: block;
+    margin: 24px;
+    max-width: 100% !important;
+    min-width: 316px;
+    padding: 14px 16px;
+    min-height: 48px;
+    transform-origin: center;
+    text-align: center;
+    
+}

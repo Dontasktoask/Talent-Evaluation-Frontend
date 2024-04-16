@@ -1,0 +1,45 @@
+.table{
+    width: 100%;  
+}
+.main {
+    left: 240px;
+    width: calc(100% - 250px);
+}
+button{
+    width: 248px;
+    color: #1a75bc;
+    font-weight: bold;
+}
+.btn-outline-hola{
+    color: #1a75bc;
+    border: 1px solid #1a75bc;
+}
+button:hover{
+    background-color: #1a75bc;
+    cursor: pointer;
+    color: azure; 
+}
+.subHeading {
+    display: block;
+    font-size: 16px;
+    padding-left: 10px;
+    margin-bottom: 0.83em; 
+    background-color: #1a75bc;
+    color:white;  
+}
+.delete{
+    color: #1a75bc;
+}
+.delete:hover{
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+}
+thead{
+    border: white;
+  }
+tr{
+    border-bottom: #404040;
+    border-style: dotted;
+}
